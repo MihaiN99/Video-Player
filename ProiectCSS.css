@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;500;600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*
+{
+    font-family: 'Roboto', sans-serif;
+}
+
+.material-symbols-outlined
+{
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+body
+{
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,240,70,1) 100%);
+}
+
+section
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.container
+{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+
+.container #video_player
+{
+    position: relative;
+    width: 1000px; /*dimensiunea clipului in pagina web */
+    height: 80%;
+    border-radius: 7px; 
+    overflow: hidden; /* permite ca elementele sa nu depaseasca cadrul */
+}
+
+.container #video_player #main-video
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* outline: none; */
+}
+
+.container #video_player .controls /* Setari pentru bara de comenzi a clipului */
+{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 45px;
+    width: 100%;
+    background: rgba(20, 12, 12, 0.71);
+    box-shadow: 0 0 40px 10px rgba(6, 6, 6, 0.25);
+    transition: 0.3s;
+}
+
+#video_player .controls .Bara
+{
+    width: 100%;
+    height: 5px;
+    margin: auto;
+    background: rgb(145, 139, 139);
+    cursor: pointer;
+}
+
+.controls .Bara .baraTimp
+{
+    position: relative;
+    width: 0%;
+    height: inherit;
+    border-radius: inherit;
+    background: rgb(255, 0, 0);
+    cursor: pointer;
+}
+
+.controls .Bara .baraTimp::before
+{
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    right: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgb(255, 0, 0);
+}
+
+.controls .controls-list
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 97%;
+    height: 46px;
+    margin: 0 auto;
+}
+
+.controls .controls-list .comenzi-stanga,
+.controls .controls-list .comenzi-dreapta
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls .comenzi-stanga .timer
+{
+    display: inline-block;
+    font-size: 14px;
+    white-space: nowrap;
+    color: rgb(161, 226, 235);
+    margin-left: 5px;
+    text-align: center;
+}
+
+.controls .icon
+{
+    display: inline-flex;
+    align-items: center;
+    color: rgb(145, 139, 139);
+    margin-left: 8px;
+    margin-right: 5px;
+}
+
+.controls .icon .material-symbols-outlined
+{
+    font-size: 26px;
+    color: rgb(161, 226, 235);
+    cursor: pointer;
+}
+
+
+.controls .icon .volume_range
+{
+    -webkit-appearance: none;
+    color: #fff;
+    cursor: pointer;
+    appearance: none;
+    width: 0px;
+    height: 3px;
+    background: #fff;
+    transition: 0.4s;
+}
+
+.controls .icon .volume_range::-webkit-slider-thumb
+{
+    width: 13px;
+    height: 13px;
+    background: rgb(161, 226, 235);
+    color: #fff;
+    opacity: 0;
+}
+
+.controls .icon:hover .volume_range
+{
+    display: inline-block;
+    width: 60px;
+}
+
+.controls .icon:hover .volume_range::-webkit-slider-thumb
+{
+    opacity: 1;
+    pointer-events: auto;
+    transition: 0.5s;
+}
+
+.comenzi-dreapta .icon .material-symbols-outlined.setari
+{
+    font-size: 24px;
+    transition: 0.3s;
+}
+
+#video_player #settings
+{
+    position: absolute;
+    right: 25px;
+    bottom: 62px;
+    background: rgb(28 28 28 / 90%);
+    width: 200px;
+    height: 250px;
+    color: #fff;
+    overflow-y: scroll;
+    z-index: 25;
+    display: none;
+}
+
+#video_player #settings.active
+{
+    display: block;
+}
+
+#video_player #settings .playback span
+{
+    font-size: 14px;
+    font-weight: 300;
+    padding: 15px 30px;
+    display: block;
+    border-bottom: 1px solid rgb(83, 83, 83);
+}
+
+#video_player #settings .playback ul
+{
+    position: relative;
+}
+
+#video_player #settings .playback ul li
+{
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    text-align: left;
+    padding: 12px 33px;
+    display: block;
+    font-size: 14px;
+}
+
+#video_player #settings .playback ul li:hover
+{
+    background: rgba(72, 69, 69, 0.9);
+}
+
+#video_player #settings .playback ul li.active::before
+{
+    content: '\2713';
+    font-family:'Times New Roman', Times, serif;
+    position: absolute;
+    padding-right: 10px;
+    font-size: 18px;
+    left: 1px;
+    text-align: left;
+}
+
+#video_player #settings::-webkit-scrollbar
+{
+    width: 2px;
+    background: transparent;
+}
+
+#video_player #settings::-webkit-scrollbar-thumb
+{
+    height: 20px;
+    background: rgba(83, 83, 83, 0.9);
+    border-radius: 10px;
+}
+
+.comenzi-dreapta .icon .setari.active
+{
+    transform: scale(0.8);
+}
+
+.comenzi-dreapta .icon .fullscreen.setari.active
+{
+    transform: scale(0.7);
+}
